@@ -614,6 +614,31 @@ body {
   margin: 0 0 20px;
 }
 
+.tech-support {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+  padding: 8px 0 calc(4px + env(safe-area-inset-bottom));
+  background: transparent;
+}
+
+.tech-support__icon {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  flex-shrink: 0;
+  opacity: 0.88;
+}
+
+.tech-support__text {
+  font-size: var(--text-xs);
+  color: #7a9bb5;
+  letter-spacing: 0.06em;
+  line-height: 1.4;
+}
+
 .toast {
   position: fixed;
   left: 50%;

@@ -3,6 +3,10 @@ window.SURVEY_CONFIG = {
   projectTitle: "西城区心理健康与传统文化素养调查",
   brandColor: "#12598f",
   storageKey: "xicheng_survey_draft_v1",
+  techSupport: {
+    logo: "assets/jinghe-emblem.png",
+    text: "静和书院提供技术支持",
+  },
   roles: [
     {
       id: "student",

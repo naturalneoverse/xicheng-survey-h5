@@ -177,6 +177,20 @@
     );
   }
 
+  function renderTechSupport() {
+    var ts = CONFIG.techSupport;
+    if (!ts) return "";
+    return (
+      '<footer class="tech-support" aria-label="技术支持">' +
+      '<img class="tech-support__icon" src="' +
+      esc(ts.logo) +
+      '" alt="" width="28" height="28" />' +
+      '<span class="tech-support__text">' +
+      esc(ts.text) +
+      "</span></footer>"
+    );
+  }
+
   function renderLanding() {
     var rolesHtml = CONFIG.roles
       .map(function (role) {
@@ -461,7 +475,9 @@
       '<div class="page-footer"><div class="btn-nav btn-nav--split">' +
       '<button type="button" class="btn-nav-back" data-action="restart">返回首页</button>' +
       '<button type="button" class="btn-nav-next" data-action="export">导出 JSON</button>' +
-      "</div></div></div>";
+      "</div></div>" +
+      renderTechSupport() +
+      "</div>";
   }
 
   function render() {
