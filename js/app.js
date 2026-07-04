@@ -370,7 +370,7 @@
     if (step.type === "open") {
       var oq = step.openQuestion;
       body =
-        '<div class="card"><h2 class="card-title">' +
+        '<div class="card survey-step-start"><h2 class="card-title">' +
         esc(oq.title) +
         '</h2><p class="card-desc">' +
         esc(oq.intro) +
@@ -382,7 +382,7 @@
         esc(state.openAnswer) +
         "</textarea></div></div>";
     } else {
-      body += '<div class="progress-wrap"><div class="progress-meta"><span>第 ' +
+      body += '<div class="progress-wrap survey-step-start"><div class="progress-meta"><span>第 ' +
         (state.stepIndex + 1) +
         " / " +
         state.steps.length +
@@ -479,7 +479,21 @@
       "</div>";
   }
 
-  function render() {
+  function scrollPageToTop() {
+    requestAnimationFrame(function () {
+      window.scrollTo(0, 0);
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+      var scrollEl = appEl.querySelector(".page-scroll");
+      if (scrollEl) scrollEl.scrollTop = 0;
+      if (state.screen === "survey") {
+        var anchor = appEl.querySelector(".survey-step-start");
+        if (anchor) anchor.scrollIntoView({ block: "start" });
+      }
+    });
+  }
+
+  function render(scrollToTop) {
     if (state.screen === "landing") renderLanding();
     else if (state.screen === "privacy") renderPrivacy();
     else if (state.screen === "basic") renderBasicInfo();
@@ -487,6 +501,7 @@
     else if (state.screen === "survey") renderSurveyStep();
     else if (state.screen === "complete") renderComplete();
     saveDraft();
+    if (scrollToTop !== false) scrollPageToTop();
   }
 
   function validateBasicInfo() {
@@ -643,7 +658,7 @@
       var qid = Number(t.getAttribute("data-qid"));
       var val = Number(t.getAttribute("data-value"));
       state.answers[qid] = val;
-      render();
+      render(false);
       return;
     }
 
