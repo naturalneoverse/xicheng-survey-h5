@@ -182,12 +182,11 @@
     if (!ts) return "";
     return (
       '<footer class="tech-support" aria-label="技术支持">' +
-      '<img class="tech-support__icon" src="' +
-      esc(ts.logo) +
-      '" alt="" width="28" height="28" />' +
       '<span class="tech-support__text">' +
       esc(ts.text) +
-      "</span></footer>"
+      '</span><img class="tech-support__icon" src="' +
+      esc(ts.logo) +
+      '" alt="" width="28" height="28" /></footer>'
     );
   }
 
