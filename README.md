@@ -51,6 +51,22 @@ node scripts/build-questions.js
 - 单独 HTTPS 域名（如 `survey.example.com`）
 - 与小程序云开发/数据库可后续 API 对接，但仓库与发布流程保持分离
 
+## Git 仓库
+
+本项目为**独立 Git 仓库**（与 `miniprogram-2` 无关）：
+
+```bash
+cd C:\Users\24382\WeChatProjects\xicheng-survey-h5
+git status
+```
+
+推送到 GitHub / Gitee 等远程（示例）：
+
+```bash
+git remote add origin <你的远程仓库 URL>
+git push -u origin main
+```
+
 ## 关联说明
 
 产品思路备忘见小程序仓库：`miniprogram-2/docs/h5-nfc-test-product-sketch.md`（文档可复用，代码不在该仓库内）。
