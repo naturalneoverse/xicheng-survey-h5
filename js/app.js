@@ -182,11 +182,12 @@
     if (!ts) return "";
     return (
       '<footer class="tech-support" aria-label="技术支持">' +
+      '<img class="tech-support__logo" src="' +
+      esc(ts.logo) +
+      '" alt="静和书院" />' +
       '<span class="tech-support__text">' +
       esc(ts.text) +
-      '</span><img class="tech-support__icon" src="' +
-      esc(ts.logo) +
-      '" alt="" width="28" height="28" /></footer>'
+      "</span></footer>"
     );
   }
 
@@ -479,6 +480,19 @@
       "</div>";
   }
 
+  function updateSurveyProgress() {
+    if (state.screen !== "survey") return;
+    var totalQ = countAnswerableQuestions();
+    var answered = countAnswered();
+    var progress = totalQ ? Math.round((answered / totalQ) * 100) : 0;
+    var fill = appEl.querySelector(".progress-fill");
+    if (fill) fill.style.width = progress + "%";
+    var metaSpans = appEl.querySelectorAll(".progress-meta span");
+    if (metaSpans.length >= 2) {
+      metaSpans[1].textContent = "已完成 " + answered + " / " + totalQ + " 题";
+    }
+  }
+
   function scrollPageToTop() {
     requestAnimationFrame(function () {
       window.scrollTo(0, 0);
@@ -658,7 +672,15 @@
       var qid = Number(t.getAttribute("data-qid"));
       var val = Number(t.getAttribute("data-value"));
       state.answers[qid] = val;
-      render(false);
+      var block = t.closest(".question-block");
+      if (block) {
+        block.querySelectorAll(".option-btn.selected").forEach(function (btn) {
+          btn.classList.remove("selected");
+        });
+        t.classList.add("selected");
+      }
+      updateSurveyProgress();
+      saveDraft();
       return;
     }
 

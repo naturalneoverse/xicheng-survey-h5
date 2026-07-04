@@ -623,18 +623,19 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 6px;
+  gap: 8px;
   margin-top: 16px;
   padding: 8px 0 calc(4px + env(safe-area-inset-bottom));
   background: transparent;
 }
 
-.tech-support__icon {
-  width: 28px;
-  height: 28px;
+.tech-support__logo {
+  height: 42px;
+  width: auto;
+  max-width: 88%;
   object-fit: contain;
   flex-shrink: 0;
-  opacity: 0.88;
+  opacity: 0.92;
 }
 
 .tech-support__text {

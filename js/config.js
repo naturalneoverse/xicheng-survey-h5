@@ -4,7 +4,7 @@ window.SURVEY_CONFIG = {
   brandColor: "#12598f",
   storageKey: "xicheng_survey_draft_v1",
   techSupport: {
-    logo: "assets/jinghe-emblem.png",
+    logo: "assets/jinghe-logo.png",
     text: "静和书院提供技术支持",
   },
   roles: [
