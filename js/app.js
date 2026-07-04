@@ -132,17 +132,10 @@
     localStorage.removeItem(CONFIG.storageKey);
   }
 
-  function mascotSrc(name) {
-    return "assets/" + name + ".png";
-  }
-
-  function renderBubble(mascot, color, html) {
+  function renderBubble(color, html) {
     return (
-      '<div class="bubble-row left">' +
-      '<img class="bubble-avatar" src="' +
-      mascotSrc(mascot) +
-      '" alt="" />' +
-      '<div class="chat-bubble" style="--bubble-border:' +
+      '<div class="bubble-row">' +
+      '<div class="chat-bubble card" style="--bubble-border:' +
       esc(color) +
       '">' +
       html +
@@ -153,14 +146,7 @@
   function renderHeader(title, sub) {
     return (
       '<header class="header">' +
-      '<div class="header-logo-row">' +
-      '<img class="mascot" src="' +
-      mascotSrc("xiaoqi") +
-      '" alt="小麒" />' +
-      '<img class="mascot" src="' +
-      mascotSrc("xiaolin") +
-      '" alt="小麟" />' +
-      "</div>" +
+      '<p class="header-org">西城区教育调查</p>' +
       "<h1 class=\"header-title\">" +
       esc(title) +
       "</h1>" +
@@ -172,12 +158,16 @@
   function renderFooter(primaryLabel, primaryAction, opts) {
     opts = opts || {};
     var backBtn = opts.showBack
-      ? '<button type="button" class="btn btn-ghost" data-action="back">' + esc(opts.backLabel || "上一步") + "</button>"
+      ? '<button type="button" class="btn-nav-back" data-action="back">' + esc(opts.backLabel || "上一步") + "</button>"
       : "";
+    var navClass = opts.showBack ? "btn-nav btn-nav--split" : "btn-nav btn-nav--single";
     return (
-      '<div class="page-footer"><div class="btn-row">' +
+      '<div class="page-footer">' +
+      '<div class="' +
+      navClass +
+      '">' +
       backBtn +
-      '<button type="button" class="btn btn-primary" data-action="' +
+      '<button type="button" class="btn-nav-next" data-action="' +
       esc(primaryAction) +
       '"' +
       (opts.primaryDisabled ? " disabled" : "") +
@@ -195,8 +185,10 @@
           esc(role.id) +
           '">' +
           '<img class="role-icon" src="' +
-          mascotSrc(role.mascot) +
-          '" alt="" />' +
+          esc(role.icon) +
+          '" alt="' +
+          esc(role.label) +
+          '" />' +
           "<span><span class=\"role-label\">" +
           esc(role.label) +
           "</span>" +
@@ -231,7 +223,6 @@
       '<div class="page-scroll">' +
       renderHeader("隐私保护与知情同意", meta ? meta.label + "版问卷" : "") +
       renderBubble(
-        meta ? meta.mascot : "xiaolin",
         meta ? meta.bubbleColor : "#b7d6ea",
         "请先阅读以下说明。只有勾选同意后，才能开始填写问卷。",
       ) +
@@ -318,7 +309,7 @@
       '<div class="page">' +
       '<div class="page-scroll">' +
       renderHeader("基本信息", state.survey.title) +
-      renderBubble(meta.mascot, meta.bubbleColor, "请先填写基本信息。带 <span style=\"color:#d9534f\">*</span> 为必填项。") +
+      renderBubble(meta.bubbleColor, "请先填写基本信息。带 <span style=\"color:#d9534f\">*</span> 为必填项。") +
       '<div class="card"><h2 class="card-title">基本信息</h2>' +
       fields +
       "</div></div>" +
@@ -339,7 +330,6 @@
       '<div class="page-scroll">' +
       renderHeader("问卷说明", "") +
       renderBubble(
-        meta.mascot,
         meta.bubbleColor,
         '<div class="bubble-greeting">' +
           esc(g.greeting) +
@@ -455,7 +445,6 @@
       '<div class="page-scroll">' +
       renderHeader("提交成功", "") +
       renderBubble(
-        meta.mascot,
         meta.bubbleColor,
         "问卷结束，感谢你的认真作答！你的数据已暂存于本机浏览器（Phase 0 预览版，尚未上传服务器）。",
       ) +
@@ -469,9 +458,9 @@
       countAnswered() +
       " 题</p>" +
       '<div class="note-box">正式版将接入服务端存储与计分分析。当前版本不含错位度计算与报告生成。</div></div></div>' +
-      '<div class="page-footer"><div class="btn-row">' +
-      '<button type="button" class="btn btn-secondary" data-action="restart">返回首页</button>' +
-      '<button type="button" class="btn btn-primary" data-action="export">导出 JSON</button>' +
+      '<div class="page-footer"><div class="btn-nav btn-nav--split">' +
+      '<button type="button" class="btn-nav-back" data-action="restart">返回首页</button>' +
+      '<button type="button" class="btn-nav-next" data-action="export">导出 JSON</button>' +
       "</div></div></div>";
   }
 

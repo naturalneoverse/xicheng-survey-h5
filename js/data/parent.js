@@ -2,7 +2,6 @@
 window.SURVEY_PARENT = {
   "role": "parent",
   "title": "西城区家长心理状态与家庭教育调查问卷",
-  "mascot": "xiaolin",
   "basicInfoFields": [
     {
       "key": "gender",

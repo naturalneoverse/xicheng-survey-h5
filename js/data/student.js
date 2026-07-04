@@ -2,7 +2,6 @@
 window.SURVEY_STUDENT = {
   "role": "student",
   "title": "西城区中小学生心理健康与传统文化素养调查问卷",
-  "mascot": "xiaolin",
   "basicInfoFields": [
     {
       "key": "grade",

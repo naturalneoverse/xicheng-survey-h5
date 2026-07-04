@@ -2,7 +2,6 @@
 window.SURVEY_TEACHER = {
   "role": "teacher",
   "title": "西城区教师职业心理与育人状态调查问卷",
-  "mascot": "xiaoqi",
   "basicInfoFields": [
     {
       "key": "grade",

@@ -25,7 +25,6 @@ function sub(title, questionsOrIntro, maybeQuestions) {
 const STUDENT = {
   role: "student",
   title: "西城区中小学生心理健康与传统文化素养调查问卷",
-  mascot: "xiaolin",
   basicInfoFields: [
     { key: "grade", label: "年级", type: "text", required: true },
     { key: "className", label: "班级", type: "text", required: true },
@@ -188,7 +187,6 @@ const STUDENT = {
 const TEACHER = {
   role: "teacher",
   title: "西城区教师职业心理与育人状态调查问卷",
-  mascot: "xiaoqi",
   basicInfoFields: [
     { key: "grade", label: "任教年级", type: "text", required: true },
     { key: "subject", label: "任教科目", type: "text", required: true },
@@ -340,7 +338,6 @@ const TEACHER = {
 const PARENT = {
   role: "parent",
   title: "西城区家长心理状态与家庭教育调查问卷",
-  mascot: "xiaolin",
   basicInfoFields: [
     { key: "gender", label: "您的性别", type: "select", options: ["男", "女"], required: true },
     { key: "age", label: "您的年龄", type: "text", required: true },

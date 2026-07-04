@@ -1,27 +1,28 @@
 /* eslint-disable */
 window.SURVEY_CONFIG = {
   projectTitle: "西城区心理健康与传统文化素养调查",
+  brandColor: "#12598f",
   storageKey: "xicheng_survey_draft_v1",
   roles: [
     {
       id: "student",
       label: "学生",
       desc: "中小学生心理健康与传统文化素养调查",
-      mascot: "xiaolin",
+      icon: "assets/icons/student.svg",
       bubbleColor: "#b7d6ea",
     },
     {
       id: "parent",
       label: "家长",
       desc: "家长心理状态与家庭教育调查",
-      mascot: "xiaolin",
+      icon: "assets/icons/parent.svg",
       bubbleColor: "#b7d6ea",
     },
     {
       id: "teacher",
       label: "教师",
       desc: "教师职业心理与育人状态调查",
-      mascot: "xiaoqi",
+      icon: "assets/icons/teacher.svg",
       bubbleColor: "#7fb3d6",
     },
   ],
